@@ -1,8 +1,10 @@
-import pandas
 from pathlib import Path
 from os import listdir
 from os.path import isfile, join
 
+from datetime import datetime
+
+import pandas
 import pandas as pd
 
 OUTPUT_PATH = Path(Path.cwd(), "reports")
@@ -12,8 +14,8 @@ pd.options.display.max_rows
 pd.set_option('display.max_columns', None)
 
 
-def get_csv_files():
-    files = [f for f in listdir(INPUT_PATH) if isfile(join(INPUT_PATH, f))]
+def get_files(path):
+    files = [f for f in listdir(path) if isfile(join(path, f))]
     return files
 
 
@@ -35,21 +37,19 @@ def describer(dataset=None):
 
 
 def write_to_file(filename, file, data):
-    f = open(Path(OUTPUT_PATH, f"{filename}.txt"), "w")
-    f.write(f"{file}\n{data}")
+    fname = f"ReportN{filename}_date_{str(datetime.now().day)}_{str(datetime.now().month)}_{str(datetime.now().year)}.txt"
+    f = open(Path(OUTPUT_PATH, fname), "w")
+    str_of_data = f"{file}\n{data}"
+    print(str_of_data)
+    f.write(str_of_data)
 
 
 if __name__ == "__main__":
-    CSV_FILES = get_csv_files()
+    CSV_FILES = get_files(INPUT_PATH)
     CSV_FILE_PATHS = get_full_path(CSV_FILES)
-    iter = 1
+    iter = len(get_files(OUTPUT_PATH))
     for file in CSV_FILE_PATHS:
-        # Ассоциация датасета, который можем передавать дальше в функции
         dataset = pd_dateset(file)
-
-        # Описательная статистика
         stat_describe = describer(dataset)
-
-        # Запись отчета в файл
         write_to_file(iter, file, stat_describe)
         iter += 1
