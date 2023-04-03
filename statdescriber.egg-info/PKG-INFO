@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: statdescriber
+Version: 1.0.0
+Summary: This is small pakage for my university course project. It help calculate statistic for massive of csv files
+Home-page: https://github.com/schubarkrsk/StatDescriber
+Author: Stanislav Chubar
+Author-email: stas-chubar@yandex.ru
+License: GNU GPL V3
+License-File: LICENSE

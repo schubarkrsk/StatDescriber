@@ -1,0 +1,8 @@
+LICENSE
+setup.py
+statdescriber/__init__.py
+statdescriber/__main__.py
+statdescriber.egg-info/PKG-INFO
+statdescriber.egg-info/SOURCES.txt
+statdescriber.egg-info/dependency_links.txt
+statdescriber.egg-info/top_level.txt
