@@ -23,8 +23,14 @@ def get_full_path(files):
     return files
 
 
-def describer(file):
+def pd_dateset(file):
     dataset = pandas.read_csv(file, sep=';')
+    return dataset
+
+
+def describer(dataset=None):
+    if dataset is None:
+        dataset = pd_dateset(file)
     return dataset.describe()
 
 
@@ -38,6 +44,7 @@ if __name__ == "__main__":
     CSV_FILE_PATHS = get_full_path(CSV_FILES)
     iter = 1
     for file in CSV_FILE_PATHS:
-        stat_describe = describer(file)
+        dataset = pd_dateset(file)
+        stat_describe = describer(dataset)
         write_to_file(iter, file, stat_describe)
-        iter+=1
+        iter += 1
