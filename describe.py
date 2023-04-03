@@ -28,12 +28,16 @@ def describer(file):
     return dataset.describe()
 
 
+def write_to_file(filename, file, data):
+    f = open(Path(OUTPUT_PATH, f"{filename}.txt"), "w")
+    f.write(f"{file}\n{data}")
+
+
 if __name__ == "__main__":
     CSV_FILES = get_csv_files()
     CSV_FILE_PATHS = get_full_path(CSV_FILES)
     iter = 1
     for file in CSV_FILE_PATHS:
         stat_describe = describer(file)
-        f = open(Path(OUTPUT_PATH, f"{iter}.txt"), "w")
-        f.write(f"{file}\n{stat_describe}")
+        write_to_file(iter, file, stat_describe)
         iter+=1
