@@ -40,8 +40,12 @@ def write_to_file(filename, file, data):
     fname = f"ReportN{filename}_date_{str(datetime.now().day)}_{str(datetime.now().month)}_{str(datetime.now().year)}.txt"
     f = open(Path(OUTPUT_PATH, fname), "w")
     str_of_data = f"{file}\n{data}"
+    print(f"\n\n================================================="
+          f"\n======SAVE AS \"{fname}\"======\n"
+          f"file structure::\n")
     print(str_of_data)
     f.write(str_of_data)
+    f.close()
 
 
 if __name__ == "__main__":
@@ -53,3 +57,5 @@ if __name__ == "__main__":
         stat_describe = describer(dataset)
         write_to_file(iter, file, stat_describe)
         iter += 1
+
+    print("\n\n\nWe are finished!")
