@@ -44,7 +44,12 @@ if __name__ == "__main__":
     CSV_FILE_PATHS = get_full_path(CSV_FILES)
     iter = 1
     for file in CSV_FILE_PATHS:
+        # Ассоциация датасета, который можем передавать дальше в функции
         dataset = pd_dateset(file)
+
+        # Описательная статистика
         stat_describe = describer(dataset)
+
+        # Запись отчета в файл
         write_to_file(iter, file, stat_describe)
         iter += 1
